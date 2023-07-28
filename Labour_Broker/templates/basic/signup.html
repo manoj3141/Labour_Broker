@@ -1,0 +1,45 @@
+{% extends 'basic/base.html' %}
+{% block bod %}
+<style>
+    p{
+        padding-left: 100px;
+    }
+    a{
+        text-decoration: none;
+        color: rgb(3, 22, 22);
+    }
+</style>
+<div class="row">
+
+
+
+    <div class="col-md-4 offset-4">
+        <h1 class=" offset-4 mb-5">SIGN UP</h1>
+        {% if messages %}
+{% for message in messages %}
+ <span {% if message.tags %} class="alert-{{message.tags}}" {% endif %}>{{message}}</span>
+{% endfor %}
+{% endif %}
+
+<form action="" method="post" novalidate>
+{% csrf_token %}
+{% for fm in form %}
+{{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
+{% endfor %}
+<input type="submit" class="btn btn-info offset-5 mt-3" value="Sign">
+
+{% if form.non_field_errors %}
+{% for errors in form.non_field_errors %}
+<p class="alert alert-danger">{{errors}}</p>
+{% endfor %}
+{% endif %}
+
+
+</form>
+<p>Already existing user? <a href="{% url 'login' %}"class="text-primary">Login</a></p>
+
+
+    </div>
+</div>
+
+{% endblock bod %}

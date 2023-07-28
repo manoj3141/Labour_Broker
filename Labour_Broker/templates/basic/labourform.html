@@ -1,0 +1,38 @@
+{% extends 'basic/base.html' %}
+{% block styling %}
+<style>
+    h4{
+        text-align: center;
+        color:teal
+    }
+</style>
+{% endblock %}
+{% block bod %}
+{% if messages %}
+{% for m in messages %}
+<p class="alert alert-success">{{m}}</p>
+{% endfor %}
+{% endif %}
+
+<div class="row">
+<div class="col-md-4 offset-4">
+    <h4 class=" ">Labour Details</h4>
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+    
+{% for fm in form %}
+<div class="mb-3">
+{{fm.label_tag}} {{fm}} <small class="alert-danger">{{fm.errors|striptags}}</small>
+</div>
+{% endfor %}
+
+<button class="btn btn-primary offset-5">Submit</button>
+{% if form.non_field_errors %}
+{% for errors in form.non_field_errors %}
+<p class="alert alert-danger">{{errors}}</p>
+{% endfor %}
+{% endif %}
+</form>
+</div>
+</div>
+{% endblock %}

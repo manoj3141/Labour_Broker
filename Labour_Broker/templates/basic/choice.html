@@ -1,0 +1,27 @@
+ 
+{% extends 'basic/base.html' %}
+{% block bod %}
+<style>
+body{
+  background-color: teal;
+  padding: 20px;
+}
+  div{
+    margin: 20%;
+    margin-top: 11%;
+  }
+</style>
+<div class="d-grid gap-2 p-5">
+    <h1 class="offset-1 mb-5">Choose any one of the given type</h1>
+    <a href="{% url 'choice' %}?type=labour" id="labour" class="btn btn-light p-4 mb-3" type="button" onclick="mkcol('labour')">I am a labour</a>
+    <a href="{% url 'choice' %}?type=owner" id='owner' class="btn btn-light p-4" type="button" onclick="mkcol('owner')">I want a labour</a>
+<script>
+  var type = window.location.search.split('=')[2];
+  
+  function mkcol(type){
+    document.getElementById(type).style.background= 'blue';
+    }
+
+</script>  
+
+{% endblock %}

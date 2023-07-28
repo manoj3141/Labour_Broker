@@ -1,0 +1,87 @@
+{% extends 'basic/base.html' %}
+{% block styling %}
+<style>
+    .row{
+        padding: 5%;
+        padding-left: 70px;
+        padding-right: 40px;
+    }
+    p{
+        color: #0e0e0e;
+        display: inline;
+        padding: 20px;
+        padding-left: 15px;
+        font-size: 20px;
+        font-family:'Courier New', Courier, monospace;
+    }
+    div{
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    h3{
+        font-size: x-large;
+        color:rgb(6, 5, 7);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;background-color:yellow;
+        margin-right: 46%;
+        padding: 10px;
+        margin-left: 2%;
+    }
+</style>
+{% endblock %}
+{% block bod %}
+<a href="{% url 'home' %}"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left-circle-fill " viewBox="0 0 16 16">
+    <path class="text-dark" d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+  </svg></a>
+{% if data %}
+<h3 class="offset-5">Labour   Form</h3>
+<div class="d-inline-flex " style="margin-left: 32%;margin-top: 10px;">
+    <div class="text-light " style="width: 500px;background: teal;">
+        <div class="row  ">
+            {% if data.type != None  %}
+    <div class="col offset-3 px-4 mb-3 text-warning text-lg" style="font-size:xx-large;" ><b>{{data.type|capfirst }}</b></div>
+    {% else %}
+    <div class="col offset-3 px-4 mb-3 text-warning text-lg" style="font-size:xx-large;" ><b>{{data.other_type|capfirst }}</b></div>
+    {% endif %}
+    </div>
+    <div class="row">
+        <div class="col">Name</div>
+        <div class="col">{{data.name|capfirst }}</div>
+    </div>
+    
+    <div class="row">
+        <div class="col">No Of Workers</div>
+        <div class="col">{{data.no_of_w}}</div>
+    </div>
+    
+    <div class="row">
+        <div class="col">Salary</div>
+        <div class="col">{{data.salary}}</div>
+    </div>
+    
+    <div class="row">
+        <div class="col">Address</div>
+        <div class="col">{{data.location|capfirst }}</div>
+    </div>
+    
+    <div class="row">
+        <div class="col">Other details</div>
+        <div class="col">{{data.other_details|capfirst }}</div>
+    </div>
+    
+    <div class="row">
+        <div class="col">Phone</div>
+        <div class="col text-info">{{data.contact}}</div>
+    </div>
+    <a class="btn btn-primary offset-5 mb-3 mt-2" href="{% url 'profile' %}">Update</a>
+    </div>
+
+    </div>
+{% endif %}
+{% if userdata %}
+<div class="" style="background-color:teal;margin-top: 8%;margin-right: 45%;margin-left: 28%;padding: 50px;color: white;" >
+<p>username : </p> <b>{{userdata.username}}</b><br>
+<p>Name : </p> <b>{{userdata.first_name}}</b><br>
+<p>email : </p> <b> {{userdata.email}}</b><br>
+
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+body {
+  background-image: url("/static/images/man.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+p {
+  color: aquamarine;
+}
+
+#search {
+  margin-top: 5%;
+}
+
+a {
+  text-decoration: none;
+  padding-left: 10%;
+  color: white;
+}
+
+select {
+  font-family: 'Viga', sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  margin: 0px 5px 5px 5px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  display: inline-block;
+  color: rgb(146, 145, 145);
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-container input[type="search"] {
+  margin-left: 5px;
+  border: none;
+}
+

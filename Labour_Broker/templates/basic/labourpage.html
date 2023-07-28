@@ -1,0 +1,68 @@
+{% extends 'basic/base.html' %}
+{% block styling %}
+<style>
+    body{
+        background: whitesmoke;
+       
+    }
+    .col{
+        padding: 12px;
+        padding-left: 15px;
+        
+    }
+</style>
+{% endblock %}
+{% block bod %}
+{% if messages %}
+{% for message in messages %}
+<script>alert("No records found")</script>
+{% endfor %}
+{% endif %}
+<a href="{% url 'home' %}"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left-circle-fill " viewBox="0 0 16 16">
+    <path class="text-dark" d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+  </svg></a>
+{% for data in data %}
+
+<div class="d-inline-flex ">
+<div class="text-light m-5 p-5" style="width: 330px;background: teal;">
+<div class="row">
+    {% if data.type != None %}
+    <div class="col mx-3 px-5 mb-3 text-warning" style="font-size:x-large;"><b>{{data.type|capfirst }}</b></div>
+</div>
+{% else %}
+<div class="col mx-3 px-5 mb-3 text-warning" style="font-size:x-large;"><b>{{data.other_type|capfirst }}</b></div>
+</div>
+{% endif %}
+<div class="row">
+    <div class="col">Name</div>
+    <div class="col" style="color: rgb(11, 223, 223);font-style: italic;">{{data.name|capfirst }}</div>
+</div>
+
+<div class="row">
+    <div class="col">No Of Workers</div>
+    <div class="col">{{data.no_of_w}}</div>
+</div>
+
+<div class="row">
+    <div class="col">Salary</div>
+    <div class="col">{{data.salary}}</div>
+</div>
+
+<div class="row">
+    <div class="col">Address</div>
+    <div class="col">{{data.location|capfirst }}</div>
+</div>
+
+<div class="row">
+    <div class="col">Other details</div>
+    <div class="col">{{data.other_details|capfirst }}</div>
+</div>
+
+<div class="row">
+    <div class="col">Phone</div>
+    <div class="col text-info">{{data.contact}}</div>
+</div>
+</div>
+</div>
+{% endfor %}
+{% endblock %}
